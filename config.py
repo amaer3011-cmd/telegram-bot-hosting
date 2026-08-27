@@ -18,11 +18,16 @@ ADMIN_IDS = [int(x.strip()) for x in os.getenv("ADMIN_IDS", "").split(",") if x.
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# يمكن توجيه بيانات التشغيل إلى Volume مستقل (مثل /app/data على Railway)
+# مع إبقاء كود التطبيق في /app حتى لا يحجب الـVolume ملفات الصورة.
+DATA_DIR = os.getenv("DATA_DIR", BASE_DIR)
+os.makedirs(DATA_DIR, exist_ok=True)
+
 # مجلد تخزين ملفات البوتات المرفوعة (لكل مستخدم مجلد فرعي)
-BOTS_DIR = os.path.join(BASE_DIR, "uploaded_bots")
+BOTS_DIR = os.path.join(DATA_DIR, "uploaded_bots")
 
 # قاعدة بيانات SQLite
-DB_PATH = os.path.join(BASE_DIR, "hosting.db")
+DB_PATH = os.path.join(DATA_DIR, "hosting.db")
 
 # الحد الافتراضي لعدد البوتات المسموح بها لكل مستخدم جديد
 DEFAULT_MAX_BOTS = 3
