@@ -1,0 +1,27 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Runtime state and user data
+hosting.db
+hosting.db-wal
+hosting.db-shm
+uploaded_bots/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Logs and local output
+*.log
+logs/
+deployment_notes.md
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
